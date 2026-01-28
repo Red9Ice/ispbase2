@@ -1,0 +1,364 @@
+/**
+ * @file: Settings.css
+ * @description: Стили для компонента настроек.
+ * @dependencies: App.css
+ * @created: 2026-01-27
+ */
+
+.settings-page {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  background: var(--bg-secondary);
+  transition: background-color 0.3s ease;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.settings-header h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.settings-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+.settings-message {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.settings-message.success {
+  background: rgba(16, 185, 129, 0.15);
+  color: #065f46;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+[data-theme="dark"] .settings-message.success {
+  background: rgba(16, 185, 129, 0.25);
+  color: #6ee7b7;
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.settings-message.error {
+  background: rgba(239, 68, 68, 0.15);
+  color: #991b1b;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+[data-theme="dark"] .settings-message.error {
+  background: rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.settings-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.3s ease;
+}
+
+.settings-tab {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: -1px;
+}
+
+.settings-tab:hover {
+  color: var(--text-primary);
+}
+
+.settings-tab.active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.settings-section {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--card-border);
+  transition: all 0.3s ease;
+}
+
+.settings-section h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.status-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.status-item {
+  padding: 1.5rem;
+  background: var(--bg-primary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.status-item:hover {
+  border-color: var(--border-color-strong);
+}
+
+.status-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.status-code {
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-tertiary);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-family: monospace;
+  min-width: 80px;
+  text-align: center;
+}
+
+.status-info .input {
+  flex: 1;
+  max-width: 300px;
+}
+
+.status-colors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.color-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.color-group label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.color-input-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.color-input-group input[type="color"] {
+  width: 50px;
+  height: 40px;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 2px;
+  background: var(--input-bg);
+  transition: border-color 0.2s;
+}
+
+.color-input-group input[type="color"]:hover {
+  border-color: var(--input-focus);
+}
+
+.color-input-group input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.color-input-group input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 4px;
+}
+
+.color-input-group .input {
+  flex: 1;
+  min-width: 0;
+}
+
+.status-preview {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.theme-colors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.theme-color-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.theme-color-item label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.theme-color-item .color-input-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.theme-color-item .color-input-group input[type="color"] {
+  width: 50px;
+  height: 40px;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 2px;
+  background: var(--input-bg);
+  transition: border-color 0.2s;
+}
+
+.theme-color-item .color-input-group input[type="color"]:hover {
+  border-color: var(--input-focus);
+}
+
+.theme-color-item .color-input-group .input {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .settings-page {
+    padding: 1rem;
+  }
+
+  .settings-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .settings-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .settings-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .settings-actions button {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .settings-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1.5rem;
+  }
+
+  .settings-tab {
+    padding: 0.625rem 1rem;
+    font-size: 0.8125rem;
+    white-space: nowrap;
+  }
+
+  .settings-content {
+    gap: 1.5rem;
+  }
+
+  .settings-section {
+    padding: 1rem;
+  }
+
+  .settings-section h2 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+
+  .status-colors {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-colors-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .status-item {
+    padding: 1rem;
+  }
+
+  .status-info {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .status-info .input {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-page {
+    padding: 0.75rem;
+  }
+
+  .settings-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .settings-tab {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .settings-section {
+    padding: 0.75rem;
+  }
+
+  .status-item {
+    padding: 0.75rem;
+  }
+}

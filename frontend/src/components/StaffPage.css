@@ -1,0 +1,52 @@
+/**
+ * @file: StaffPage.css
+ * @description: Стили страницы персонала с вкладками
+ * @created: 2026-01-27
+ */
+
+/* Вкладки */
+.staff-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+}
+
+.staff-tab {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  bottom: -1px;
+}
+
+.staff-tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+}
+
+.staff-tab-active {
+  color: var(--color-accent-dark);
+  border-bottom-color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .staff-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .staff-tab {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+}

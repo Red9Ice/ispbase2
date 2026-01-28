@@ -1,0 +1,93 @@
+/**
+ * @file: WarehouseSetsTab.css
+ * @description: Стили для вкладки "Наборы".
+ * @created: 2026-01-27
+ */
+
+.warehouse-sets-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.warehouse-price-range {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+@media (max-width: 1200px) {
+  .warehouse-price-range {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
+
+.warehouse-price-range-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.warehouse-price-range-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.warehouse-price-input {
+  width: 80px;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.warehouse-price-input:focus {
+  outline: none;
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px var(--color-accent-light);
+}
+
+.warehouse-button-filter-active {
+  padding: 0.5rem 1rem;
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.warehouse-button-filter-active:hover {
+  background: var(--color-accent);
+  color: white;
+}
+
+.warehouse-button-icon {
+  padding: 0.5rem;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.warehouse-button-icon:hover {
+  background: var(--table-row-hover);
+  border-color: var(--border-color-strong);
+}

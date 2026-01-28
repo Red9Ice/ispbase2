@@ -1,0 +1,342 @@
+/**
+ * @file: AccessManagement.css
+ * @description: Access management: quick roles, matrix, table.
+ * @dependencies: themes.css
+ * @created: 2026-01-27
+ */
+
+.access-management {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.access-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-primary);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.access-view-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.access-view-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.access-view-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.875rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.access-view-btn:hover {
+  border-color: var(--color-accent);
+  background: var(--bg-tertiary);
+}
+
+.access-view-btn.active {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.access-matrix-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.access-dirty-hint {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.access-quick-roles {
+  padding: 0.75rem 1rem;
+  background: var(--bg-primary);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.access-quick-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.access-roles-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.access-role-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  font-size: 0.8125rem;
+}
+
+.access-role-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.access-role-apply-label {
+  color: var(--text-tertiary);
+}
+
+.access-role-select {
+  padding: 0.35rem 0.5rem;
+  font-size: 0.8125rem;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  min-width: 140px;
+}
+
+.access-error {
+  padding: 0.75rem 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  color: #dc2626;
+  font-size: 0.875rem;
+}
+
+.access-table-wrap {
+  overflow-x: auto;
+}
+
+.access-table {
+  table-layout: auto;
+}
+
+.access-table th:nth-child(1) {
+  width: 4rem;
+}
+
+.access-table th:nth-child(2) {
+  min-width: 12rem;
+}
+
+.access-table th:nth-child(4) {
+  width: 14rem;
+}
+
+.access-user-display {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.access-user-name {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.access-user-email {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.access-perms-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.access-perms-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 320px;
+}
+
+.access-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.access-check input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--color-accent);
+}
+
+.access-row-role-select {
+  margin-left: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.8125rem;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  max-width: 140px;
+}
+
+.tag.tag-sm {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.access-table td .button-link + .button-link {
+  margin-left: 0.75rem;
+}
+
+/* Matrix */
+.access-matrix-wrap {
+  overflow-x: auto;
+  padding: 0;
+}
+
+.access-matrix-grid {
+  display: grid;
+  grid-template-columns: 200px repeat(7, minmax(90px, 1fr));
+  gap: 0;
+  min-width: max-content;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.access-matrix-corner {
+  grid-column: 1;
+  grid-row: 1;
+  min-height: 44px;
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.access-matrix-col-head {
+  padding: 0.5rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.access-matrix-col-head:last-of-type {
+  border-right: none;
+}
+
+.access-matrix-row-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-primary);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.8125rem;
+  position: relative;
+}
+
+.access-matrix-row-head:nth-last-child(-n+8) {
+  border-bottom: none;
+}
+
+.access-matrix-user-name {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.access-matrix-user-email {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.access-matrix-dirty-dot {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.access-matrix-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+  background: var(--bg-primary);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.access-matrix-cell:nth-child(8n) {
+  border-right: none;
+}
+
+.access-matrix-row-head:nth-last-child(-n+8) ~ .access-matrix-cell,
+.access-matrix-grid > .access-matrix-cell:nth-last-child(-n+7) {
+  border-bottom: none;
+}
+
+.access-matrix-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0;
+}
+
+.access-matrix-check input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .access-matrix-grid {
+    grid-template-columns: 160px repeat(7, minmax(70px, 1fr));
+  }
+
+  .access-role-chip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

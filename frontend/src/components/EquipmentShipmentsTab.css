@@ -1,0 +1,158 @@
+.equipment-shipments-tab {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.shipments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.shipments-search {
+  flex: 1;
+  max-width: 600px;
+}
+
+.shipments-search-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+.shipments-search-input:focus {
+  outline: none;
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 2px var(--color-accent-light);
+}
+
+.shipments-stats {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.shipments-loading,
+.shipments-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 400px;
+}
+
+.shipments-table-wrapper {
+  flex: 1;
+  overflow: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.shipments-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.shipments-table thead {
+  position: sticky;
+  top: 0;
+  background: var(--table-header-bg);
+  z-index: 2;
+}
+
+.shipments-table th {
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.shipments-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.shipments-row {
+  transition: background-color 0.15s;
+}
+
+.shipments-row:hover {
+  background: var(--table-row-hover);
+}
+
+.shipments-date {
+  white-space: nowrap;
+  color: var(--text-secondary);
+}
+
+.shipments-event {
+  min-width: 200px;
+}
+
+.event-link {
+  color: var(--color-accent);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.event-link:hover {
+  text-decoration: underline;
+}
+
+.shipments-equipment {
+  min-width: 200px;
+}
+
+.shipments-from,
+.shipments-to {
+  min-width: 150px;
+}
+
+.shipments-to strong {
+  color: var(--color-accent);
+}
+
+.shipments-notes {
+  color: var(--text-secondary);
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-muted {
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .shipments-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .shipments-search {
+    max-width: 100%;
+  }
+
+  .shipments-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .shipments-table {
+    min-width: 800px;
+  }
+}

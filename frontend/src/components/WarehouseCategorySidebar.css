@@ -1,0 +1,217 @@
+/**
+ * @file: WarehouseCategorySidebar.css
+ * @description: Стили боковой панели категорий склада.
+ * @created: 2026-01-27
+ */
+
+.warehouse-category-sidebar {
+  flex-shrink: 0;
+  width: 25%;
+  min-width: 240px;
+  max-width: 300px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  position: sticky;
+  top: 2rem;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.warehouse-sidebar-header {
+  padding: 1rem 1rem 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.warehouse-sidebar-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.warehouse-sidebar-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.warehouse-sidebar-nav-button {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.warehouse-sidebar-nav-button:hover:not(:disabled) {
+  background: var(--table-row-hover);
+  border-color: var(--border-color-strong);
+}
+
+.warehouse-sidebar-nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.warehouse-sidebar-nav-info {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.warehouse-sidebar-tree {
+  padding: 0.75rem 0;
+}
+
+.warehouse-sidebar-item-root {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem 0.25rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.warehouse-sidebar-item-root:hover {
+  background: var(--table-row-hover);
+}
+
+.warehouse-sidebar-item-root.warehouse-sidebar-item-active {
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+}
+
+.warehouse-sidebar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.warehouse-sidebar-list .warehouse-sidebar-list {
+  padding-left: 0;
+}
+
+.warehouse-sidebar-list-item {
+  margin: 0;
+}
+
+.warehouse-sidebar-node {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2rem;
+}
+
+.warehouse-sidebar-node:hover {
+  background: var(--table-row-hover);
+}
+
+.warehouse-sidebar-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.warehouse-sidebar-no-category {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.warehouse-sidebar-toggle {
+  flex-shrink: 0;
+  width: 1.5rem;
+  padding: 0.25rem 0;
+  text-align: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 0.65rem;
+  user-select: none;
+}
+
+.warehouse-sidebar-toggle-empty {
+  cursor: default;
+  color: var(--text-tertiary);
+}
+
+.warehouse-sidebar-toggle:hover:not(.warehouse-sidebar-toggle-empty) {
+  color: var(--color-accent);
+}
+
+.warehouse-sidebar-item {
+  flex: 1;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.35rem 0.5rem 0.35rem 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.warehouse-sidebar-item:hover {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.warehouse-sidebar-item.warehouse-sidebar-item-active {
+  font-weight: 600;
+  color: var(--color-accent-dark);
+}
+
+.warehouse-sidebar-node:hover .warehouse-sidebar-item.warehouse-sidebar-item-active {
+  color: var(--color-accent-dark);
+}
+
+@media (max-width: 1024px) {
+  .warehouse-category-sidebar {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .warehouse-category-sidebar {
+    width: 100%;
+    max-height: none;
+    position: static;
+    align-self: stretch;
+  }
+
+  .warehouse-sidebar-tree {
+    max-height: 220px;
+    overflow-y: auto;
+  }
+}

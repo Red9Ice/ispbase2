@@ -1,0 +1,101 @@
+/**
+ * @file: themes.css
+ * @description: CSS переменные для светлой и темной темы с оранжевым акцентом
+ * @dependencies: index.css
+ * @created: 2026-01-26
+ */
+
+:root {
+  /* Оранжевый акцентный цвет из логотипа */
+  --color-accent: #FF8C00;
+  --color-accent-hover: #FF7A00;
+  --color-accent-light: #FFA500;
+  --color-accent-dark: #E67E00;
+  
+  /* Основной цвет для градиентов и акцентов (синий для совместимости с виджетами) */
+  --primary-color: #667eea;
+
+  /* Светлая тема */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;
+  --bg-tertiary: #F1F5F9;
+  --bg-sidebar: #F5F5F5;
+  --bg-sidebar-hover: #E0E0E0;
+  --bg-sidebar-active: #FF8C00;
+  
+  --text-primary: #0F172A;
+  --text-secondary: #64748B;
+  --text-tertiary: #94A3B8;
+  --text-inverse: #F1F5F9;
+  --text-sidebar: #333333;
+  --text-sidebar-active: #FFFFFF;
+  
+  --border-color: #E2E8F0;
+  --border-color-strong: #CBD5E1;
+  --border-sidebar: #D0D0D0;
+  
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
+  
+  --card-bg: #FFFFFF;
+  --card-border: #E2E8F0;
+  
+  --input-bg: #FFFFFF;
+  --input-border: #CBD5E1;
+  --input-focus: #FF8C00;
+  
+  --table-header-bg: #F8FAFC;
+  --table-row-hover: #F8FAFC;
+  
+  /* Scrollbar colors - светлая тема */
+  --scrollbar-track: #F1F5F9;
+  --scrollbar-thumb: #94A3B8;
+  --scrollbar-thumb-hover: #64748B;
+  --scrollbar-button: #94A3B8;
+  --scrollbar-button-hover: #64748B;
+  --scrollbar-button-arrow: #475569;
+}
+
+[data-theme="dark"] {
+  /* Темная тема - нейтральные серые оттенки */
+  --bg-primary: #121212;
+  --bg-secondary: #1A1A1A;
+  --bg-tertiary: #2A2A2A;
+  --bg-sidebar: #0F0F0F;
+  --bg-sidebar-hover: #1F1F1F;
+  --bg-sidebar-active: #FF8C00;
+  
+  --text-primary: #E5E5E5;
+  --text-secondary: #B0B0B0;
+  --text-tertiary: #808080;
+  --text-inverse: #121212;
+  --text-sidebar: #D0D0D0;
+  --text-sidebar-active: #FFFFFF;
+  
+  --border-color: #2D2D2D;
+  --border-color-strong: #3D3D3D;
+  --border-sidebar: #252525;
+  
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.7);
+  
+  --card-bg: #1E1E1E;
+  --card-border: #2D2D2D;
+  
+  --input-bg: #1E1E1E;
+  --input-border: #3D3D3D;
+  --input-focus: #FF8C00;
+  
+  --table-header-bg: #151515;
+  --table-row-hover: #2A2A2A;
+  
+  /* Scrollbar colors - темная тема */
+  --scrollbar-track: #1A1A1A;
+  --scrollbar-thumb: #4A4A4A;
+  --scrollbar-thumb-hover: #5A5A5A;
+  --scrollbar-button: #4A4A4A;
+  --scrollbar-button-hover: #5A5A5A;
+  --scrollbar-button-arrow: #808080;
+}

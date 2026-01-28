@@ -1,0 +1,51 @@
+/**
+ * @file: StatsWidget.css
+ * @description: Стили для виджета статистики
+ * @created: 2026-01-27
+ */
+
+.stats-widget {
+  width: 100%;
+  height: 100%;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(calc(150px * var(--widget-scale, 1)), 1fr));
+  gap: calc(12px * var(--widget-scale, 1));
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: calc(8px * var(--widget-scale, 1));
+  padding: calc(12px * var(--widget-scale, 1));
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-title {
+  font-size: calc(12px * var(--widget-scale, 1));
+  color: var(--text-secondary);
+  margin-bottom: calc(8px * var(--widget-scale, 1));
+}
+
+.stat-value {
+  font-size: calc(24px * var(--widget-scale, 1));
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: calc(4px * var(--widget-scale, 1));
+}
+
+.stat-footer {
+  font-size: calc(11px * var(--widget-scale, 1));
+  color: var(--text-secondary);
+}
+
+.text-warning {
+  color: var(--warning-color, #f59e0b);
+}
+
+.text-success {
+  color: var(--success-color, #10b981);
+}

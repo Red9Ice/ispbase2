@@ -1,0 +1,501 @@
+/**
+ * @file: VirtualLoading.css
+ * @description: Стили для компонента виртуальной погрузки.
+ * @dependencies: App.css
+ * @created: 2026-01-27
+ */
+
+.virtual-loading {
+  padding: 20px;
+}
+
+.virtual-loading-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.virtual-loading-header h2 {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.virtual-loading-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.virtual-loading-content {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 20px;
+}
+
+.virtual-loading-sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header-count {
+  color: var(--text-secondary);
+  font-weight: normal;
+  font-size: 0.875rem;
+  margin-left: 8px;
+}
+
+.warehouse-cases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.warehouse-case-item {
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  transition: all 0.2s ease;
+}
+
+.warehouse-case-item:hover {
+  border-color: var(--border-color-strong);
+  background: var(--table-row-hover);
+}
+
+.warehouse-case-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.warehouse-case-header strong {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.warehouse-case-sku {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.warehouse-case-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.crates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.crate-item {
+  padding: 12px;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.crate-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.crate-item-header strong {
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+}
+
+.crate-item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.crate-item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.crate-item-quantity label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.quantity-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.quantity-btn:hover:not(:disabled) {
+  background: var(--bg-secondary);
+  border-color: var(--input-focus);
+}
+
+.quantity-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity-input {
+  width: 60px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9375rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quantity-input:focus {
+  outline: none;
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px rgba(var(--input-focus-rgb, 0, 0, 0), 0.1);
+}
+
+.loading-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.stat-value {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.stat-progress {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat-progress-bar {
+  height: 100%;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.virtual-loading-visualization {
+  min-width: 0;
+}
+
+.trailer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.trailer-container-3d {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.trailer-3d-wrapper {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 8px;
+  isolation: isolate;
+}
+
+.trailer-3d-scene {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trailer-3d-box {
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+}
+
+.trailer-floor,
+.trailer-wall {
+  position: absolute;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  border: 1px solid rgba(80, 80, 80, 0.5);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.06);
+}
+
+.trailer-floor {
+  background: linear-gradient(180deg, rgba(200, 200, 210, 0.5) 0%, rgba(160, 160, 170, 0.5) 100%);
+}
+
+.trailer-roof {
+  position: absolute;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  border: 1px solid rgba(80, 80, 80, 0.5);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.06);
+  background: linear-gradient(180deg, rgba(248, 248, 252, 0.45) 0%, rgba(218, 218, 230, 0.45) 100%);
+}
+
+.trailer-wall {
+  background: linear-gradient(180deg, rgba(220, 220, 235, 0.35) 0%, rgba(190, 190, 205, 0.35) 100%);
+}
+
+.crate-3d {
+  position: absolute;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+  transform-origin: center center;
+}
+
+.crate-3d:hover {
+  filter: brightness(1.2);
+}
+
+/* Фура: контейнер и части (капот, салон, спальник) */
+.truck-container {
+  position: absolute;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+}
+
+.truck-part {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+}
+
+.truck-face {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.06);
+}
+
+.truck-hood .truck-face {
+  background: linear-gradient(135deg, #2d3d52 0%, #1e2a38 100%);
+}
+
+.truck-hood .truck-face.front {
+  background: linear-gradient(180deg, #3d5168 0%, #2d3d52 100%);
+}
+
+.truck-cabin .truck-face {
+  background: linear-gradient(135deg, #3d5a80 0%, #293241 100%);
+}
+
+.truck-cabin .truck-face.front {
+  background: linear-gradient(180deg, #4a6fa5 0%, #3d5a80 100%);
+}
+
+.truck-sleeper .truck-face {
+  background: linear-gradient(135deg, #344a62 0%, #243242 100%);
+}
+
+.truck-sleeper .truck-face.front {
+  background: linear-gradient(180deg, #425d7a 0%, #344a62 100%);
+}
+
+.crate-face {
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  box-shadow: 
+    inset 0 0 8px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.2);
+  backface-visibility: hidden;
+}
+
+.crate-label {
+  font-size: 10px;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 2px 4px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  pointer-events: none;
+}
+
+.view-mode-selector {
+  display: flex;
+  gap: 8px;
+}
+
+.view-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.view-btn:hover {
+  background: var(--bg-secondary);
+  border-color: var(--input-focus);
+}
+
+.view-btn.active {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.trailer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.floors-info {
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.view-hint {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 8px 12px;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px rgba(var(--input-focus-rgb, 0, 0, 0), 0.1);
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1024px) {
+  .virtual-loading-content {
+    grid-template-columns: 1fr;
+  }
+
+  .virtual-loading-sidebar {
+    order: 2;
+  }
+
+  .virtual-loading-visualization {
+    order: 1;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

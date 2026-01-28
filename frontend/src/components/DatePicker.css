@@ -1,0 +1,457 @@
+/**
+ * @file: DatePicker.css
+ * @description: Стили для современного компонента выбора даты
+ * @dependencies: DatePicker.tsx
+ * @created: 2026-01-28
+ */
+
+.date-picker-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.date-picker-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 0.5rem;
+  background: var(--bg-primary, #ffffff);
+  color: var(--text-primary, #1a1a1a);
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 2.5rem;
+  box-sizing: border-box;
+}
+
+.date-picker-input:hover:not(.date-picker-input-disabled) {
+  border-color: var(--primary-color, #4a90e2);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.date-picker-input:focus-within:not(.date-picker-input-disabled) {
+  outline: none;
+  border-color: var(--primary-color, #4a90e2);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+}
+
+.date-picker-input-error {
+  border-color: var(--error-color, #e74c3c);
+}
+
+.date-picker-input-error:hover:not(.date-picker-input-disabled) {
+  border-color: var(--error-color, #e74c3c);
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.date-picker-input-disabled {
+  background: var(--bg-disabled, #f5f5f5);
+  color: var(--text-disabled, #999);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.date-picker-value {
+  flex: 1;
+  text-align: left;
+  user-select: none;
+}
+
+.date-picker-placeholder {
+  color: var(--text-secondary, #999);
+}
+
+.date-picker-icon {
+  flex-shrink: 0;
+  color: var(--text-secondary, #666);
+  transition: transform 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.date-picker-icon-open {
+  transform: rotate(180deg);
+}
+
+/* Календарь */
+.date-picker-calendar {
+  position: fixed;
+  z-index: 10000;
+  width: 100%;
+  min-width: 300px;
+  max-width: 360px;
+  background: var(--bg-primary, #ffffff);
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  animation: datePickerSlideDown 0.2s ease-out;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Календарь в стиле Яндекс Путешествий */
+.date-picker-calendar-yandex {
+  min-width: 600px;
+  max-width: 600px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+}
+
+.date-picker-calendar-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Боковая панель с месяцами */
+.date-picker-months-sidebar {
+  width: 160px;
+  flex-shrink: 0;
+  background: var(--bg-secondary, #f5f5f5);
+  border-right: 1px solid var(--border-color, #e0e0e0);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.5rem 0;
+}
+
+.date-picker-month-item {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--text-primary, #1a1a1a);
+  font-size: 0.875rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.date-picker-month-item:hover {
+  background: var(--bg-hover, #e8e8e8);
+}
+
+.date-picker-month-item-active {
+  background: var(--bg-hover, #e8e8e8);
+  border-left-color: var(--primary-color, #4a90e2);
+  color: var(--primary-color, #4a90e2);
+  font-weight: 600;
+}
+
+/* Основная область календаря */
+.date-picker-calendar-main {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1rem;
+}
+
+.date-picker-month-calendar {
+  margin-bottom: 2rem;
+}
+
+.date-picker-month-calendar:last-child {
+  margin-bottom: 1rem;
+}
+
+.date-picker-month-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary, #1a1a1a);
+  margin-bottom: 1rem;
+  padding: 0 0.5rem;
+}
+
+@keyframes datePickerSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Заголовок календаря */
+.date-picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 0.25rem;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.date-picker-nav {
+  display: flex;
+  gap: 0.125rem;
+  flex-shrink: 0;
+}
+
+.date-picker-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  min-width: 1.75rem;
+  border: none;
+  background: transparent;
+  color: var(--text-primary, #1a1a1a);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.date-picker-nav-btn:hover {
+  background: var(--bg-hover, #f0f0f0);
+  color: var(--primary-color, #4a90e2);
+}
+
+.date-picker-nav-btn:active {
+  transform: scale(0.95);
+}
+
+.date-picker-month-year {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex: 1;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.date-picker-month-select,
+.date-picker-year-select {
+  padding: 0.375rem 0.5rem;
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 0.375rem;
+  background: var(--bg-primary, #ffffff);
+  color: var(--text-primary, #1a1a1a);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.date-picker-month-select:hover,
+.date-picker-year-select:hover {
+  border-color: var(--primary-color, #4a90e2);
+  background: var(--bg-hover, #f8f9fa);
+}
+
+.date-picker-month-select:focus,
+.date-picker-year-select:focus {
+  border-color: var(--primary-color, #4a90e2);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+/* Дни недели */
+.date-picker-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.date-picker-weekday {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary, #666);
+  padding: 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.date-picker-weekday-weekend {
+  color: var(--error-color, #e74c3c);
+}
+
+/* Сетка дней */
+.date-picker-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.date-picker-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--text-primary, #1a1a1a);
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  font-weight: 400;
+}
+
+.date-picker-day:hover:not(.date-picker-day-disabled):not(.date-picker-day-selected) {
+  background: var(--bg-hover, #f0f0f0);
+  color: var(--primary-color, #4a90e2);
+  transform: scale(1.05);
+}
+
+.date-picker-day-other-month {
+  color: var(--text-disabled, #ccc);
+  opacity: 0.5;
+}
+
+.date-picker-day-today {
+  font-weight: 600;
+}
+
+.date-picker-day-today:not(.date-picker-day-selected)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--primary-color, #4a90e2);
+  border-radius: 0.375rem;
+  pointer-events: none;
+}
+
+.date-picker-day-selected {
+  background: var(--primary-color, #4a90e2);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+}
+
+.date-picker-day-selected:hover {
+  background: var(--primary-color-dark, #357abd);
+  transform: scale(1.05);
+}
+
+.date-picker-day-disabled {
+  color: var(--text-disabled, #ccc);
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.date-picker-day-disabled:hover {
+  background: transparent;
+  transform: none;
+}
+
+.date-picker-day-weekend {
+  color: var(--error-color, #e74c3c);
+}
+
+.date-picker-day-weekend.date-picker-day-selected {
+  color: #ffffff;
+}
+
+/* Футер календаря */
+.date-picker-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border-color, #e0e0e0);
+  background: var(--bg-primary, #ffffff);
+  flex-shrink: 0;
+}
+
+.date-picker-footer-btn {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 0.375rem;
+  background: var(--bg-primary, #ffffff);
+  color: var(--text-primary, #1a1a1a);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.date-picker-footer-btn:hover {
+  background: var(--bg-hover, #f0f0f0);
+  border-color: var(--primary-color, #4a90e2);
+  color: var(--primary-color, #4a90e2);
+}
+
+.date-picker-footer-btn:active {
+  transform: scale(0.98);
+}
+
+/* Темная тема */
+[data-theme="dark"] .date-picker-input {
+  background: var(--bg-secondary, #2a2a2a);
+  border-color: var(--border-color, #404040);
+  color: var(--text-primary, #ffffff);
+}
+
+[data-theme="dark"] .date-picker-calendar {
+  background: var(--bg-secondary, #2a2a2a);
+  border-color: var(--border-color, #404040);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .date-picker-months-sidebar {
+  background: var(--bg-primary, #1a1a1a);
+  border-right-color: var(--border-color, #404040);
+}
+
+[data-theme="dark"] .date-picker-month-item:hover {
+  background: var(--bg-hover, #3a3a3a);
+}
+
+[data-theme="dark"] .date-picker-month-item-active {
+  background: var(--bg-hover, #3a3a3a);
+}
+
+[data-theme="dark"] .date-picker-nav-btn:hover {
+  background: var(--bg-hover, #3a3a3a);
+}
+
+[data-theme="dark"] .date-picker-month-select,
+[data-theme="dark"] .date-picker-year-select {
+  background: var(--bg-primary, #1a1a1a);
+  border-color: var(--border-color, #404040);
+  color: var(--text-primary, #ffffff);
+}
+
+[data-theme="dark"] .date-picker-day:hover:not(.date-picker-day-disabled):not(.date-picker-day-selected) {
+  background: var(--bg-hover, #3a3a3a);
+}
+
+[data-theme="dark"] .date-picker-footer-btn {
+  background: var(--bg-primary, #1a1a1a);
+  border-color: var(--border-color, #404040);
+  color: var(--text-primary, #ffffff);
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  .date-picker-calendar {
+    min-width: 280px;
+    max-width: calc(100vw - 2rem);
+  }
+
+  .date-picker-day {
+    font-size: 0.8125rem;
+  }
+}

@@ -1,0 +1,20 @@
+/**
+ * @file: ChartsWidget.css
+ * @description: Стили для виджета графиков
+ * @created: 2026-01-27
+ */
+
+.charts-widget {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.charts-widget .charts-grid {
+  flex: 1;
+  min-height: 0;
+  overflow: visible;
+}

@@ -1,0 +1,656 @@
+/**
+ * @file: EventCalendar.css
+ * @description: Gantt-style timeline calendar. Timeline on top, projects on left.
+ * Scroll to navigate; Ctrl+scroll to zoom.
+ * @created: 2026-01-27
+ */
+
+.event-calendar.gantt-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  height: 100%;
+  min-height: 0;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+/* Toolbar */
+.gantt-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-primary);
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+  border: 1px solid var(--border-color);
+}
+
+.gantt-toolbar-ranges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.gantt-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.875rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.gantt-btn:hover {
+  border-color: var(--color-accent);
+  background: var(--bg-tertiary);
+}
+
+.gantt-toolbar-scale {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gantt-toolbar-scale label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.gantt-select {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.875rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.gantt-toolbar-zoom {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.gantt-zoom-hint {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin-right: 0.5rem;
+}
+
+.gantt-btn-icon {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gantt-btn-icon:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.gantt-zoom-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+.gantt-loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+/* Scroll wrap: header + body */
+.gantt-scroll-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--bg-primary);
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  /* Не используем position: relative, чтобы не мешать sticky */
+}
+
+/* Header: corner + ruler */
+.gantt-timeline-header {
+  display: flex;
+  flex-shrink: 0;
+  border-bottom: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  z-index: 10;
+}
+
+.gantt-header-corner {
+  width: 220px;
+  min-width: 220px;
+  flex-shrink: 0;
+  background: var(--bg-secondary);
+  border-right: 2px solid var(--border-color);
+}
+
+.gantt-header-ruler-wrap {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: grab;
+  user-select: none;
+}
+
+.gantt-header-ruler-wrap:active {
+  cursor: grabbing;
+}
+
+.gantt-timeline-ruler {
+  position: relative;
+  min-width: max-content;
+  background: var(--bg-secondary);
+}
+
+.gantt-ruler-quarters {
+  position: relative;
+  height: 28px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.gantt-quarter-cell {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-color);
+  border-radius: 4px 4px 0 0;
+  box-sizing: border-box;
+}
+
+.gantt-ruler-months {
+  display: flex;
+  min-width: max-content;
+}
+
+.gantt-ruler-slot {
+  padding: 0.5rem 0.4rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-right: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 48px;
+  box-sizing: border-box;
+  cursor: inherit;
+  user-select: none;
+}
+
+.gantt-ruler-slot:last-of-type {
+  border-right: none;
+}
+
+.gantt-today-marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.gantt-today-marker::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ef4444;
+}
+
+.gantt-today-label {
+  position: absolute;
+  left: 2px;
+  top: -2px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #ef4444;
+  white-space: nowrap;
+  background: var(--bg-secondary);
+  padding: 0 4px;
+}
+
+/* Body: scrollable */
+.gantt-timeline-body {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+  /* Контейнер прокрутки для sticky позиционирования */
+  /* position: relative не нужен для sticky */
+}
+
+.gantt-body-inner {
+  display: flex;
+  flex-direction: column;
+  min-width: max-content;
+  /* Убеждаемся, что контейнер не мешает sticky */
+  /* Не используем position: relative, чтобы не мешать sticky */
+}
+
+.gantt-project-row,
+.gantt-empty-row {
+  display: flex;
+  min-height: 56px;
+  border-bottom: 1px solid var(--border-color);
+  /* Убеждаемся, что строка не обрезается */
+  /* Не используем position: relative, чтобы не мешать sticky */
+  overflow: visible;
+}
+
+.gantt-project-row:hover {
+  background: var(--table-row-hover, rgba(0, 0, 0, 0.02));
+}
+
+[data-theme="dark"] .gantt-project-row:hover {
+  background: var(--table-row-hover, rgba(255, 255, 255, 0.04));
+}
+
+.gantt-project-cell {
+  width: 220px;
+  min-width: 220px;
+  flex-shrink: 0;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  background: var(--bg-secondary);
+  border-right: 2px solid var(--border-color);
+  position: sticky;
+  left: 0;
+  z-index: 4;
+  /* Обеспечиваем, что фон остается видимым при прокрутке */
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+  /* Гарантируем, что элемент не скрывается за пределами контейнера */
+  margin-left: 0;
+  /* Убеждаемся, что фон полностью покрывает область при прокрутке */
+  background-clip: padding-box;
+  /* Убеждаемся, что элемент всегда виден */
+  will-change: transform;
+  /* Убеждаемся, что sticky работает правильно */
+  align-self: flex-start;
+}
+
+[data-theme="dark"] .gantt-project-cell {
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.gantt-project-block {
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  /* Убеждаемся, что текст не обрезается */
+  min-width: 0;
+  flex: 0 1 auto;
+  /* Убеждаемся, что блок полностью виден */
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.gantt-project-cell-fill {
+  width: 100%;
+  min-height: 1px;
+}
+
+.gantt-timeline-cell {
+  position: relative;
+  flex-shrink: 0;
+  min-height: 56px;
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent,
+    transparent calc(var(--slot-width, 100px) - 1px),
+    var(--border-color) calc(var(--slot-width, 100px) - 1px),
+    var(--border-color) var(--slot-width, 100px)
+  );
+  /* Убеждаемся, что колбаски не выходят за границы ячейки */
+  overflow: hidden;
+}
+
+.gantt-timeline-cell.gantt-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: none;
+  background: var(--bg-secondary);
+}
+
+/* Event bars */
+.gantt-event-bar {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 40px;
+  border-radius: 6px;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  min-width: 64px;
+  /* Убеждаемся, что текст не выходит за границы колбаски */
+  overflow: hidden;
+  /* Убеждаемся, что колбаска не выходит за границы контейнера */
+  max-width: 100%;
+  box-sizing: border-box;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease, filter 0.25s ease;
+  /* Базовые значения для плавных переходов */
+  opacity: 1;
+  filter: saturate(1) brightness(1);
+}
+
+.gantt-event-bar:hover:not(.gantt-event-bar-dimmed) {
+  transform: translateY(-50%) scale(1.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 8;
+}
+
+.gantt-event-bar-hovered {
+  transform: translateY(-50%) scale(1.1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+  z-index: 10 !important;
+  filter: brightness(1.15) !important;
+}
+
+.gantt-event-bar-dimmed {
+  opacity: 0.3 !important;
+  filter: saturate(0.2) brightness(0.6) !important;
+  transform: translateY(-50%) scale(0.98) !important;
+  box-shadow: none !important;
+  transition: opacity 0.25s ease, filter 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gantt-event-bar-dragging {
+  opacity: 0.8;
+  z-index: 20 !important;
+}
+
+.gantt-event-bar-resize-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: ew-resize;
+  z-index: 3;
+  transition: background 0.2s;
+}
+
+.gantt-event-bar-resize-handle:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.gantt-event-bar-resize-handle-left {
+  left: 0;
+  border-radius: 6px 0 0 6px;
+}
+
+.gantt-event-bar-resize-handle-right {
+  right: 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.gantt-event-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  max-width: 100%;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  /* Убеждаемся, что текст не выходит за границы колбаски */
+  box-sizing: border-box;
+}
+
+.gantt-event-time {
+  font-size: 0.625rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  max-width: 100%;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  /* Убеждаемся, что текст не выходит за границы колбаски */
+  box-sizing: border-box;
+}
+
+/* Legend */
+.gantt-legend {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.gantt-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gantt-legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+/* Status colors */
+:root {
+  --status-draft: #94a3b8;
+  --status-request: #fbbf24;
+  --status-in-work: #3b82f6;
+  --status-completed: #10b981;
+  --status-canceled: #ef4444;
+}
+
+[data-theme="dark"] {
+  --status-draft: #64748b;
+  --status-request: #f59e0b;
+  --status-in-work: #2563eb;
+  --status-completed: #059669;
+  --status-canceled: #dc2626;
+}
+
+/* Tooltip для мероприятий */
+.gantt-event-tooltip {
+  position: absolute;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: var(--shadow-lg);
+  z-index: 10000;
+  min-width: 250px;
+  max-width: 350px;
+  pointer-events: auto;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1), transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Стрелочка слева tooltip - указывает на центр колбаски по высоте */
+.gantt-event-tooltip.tooltip-arrow-left::after {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: calc(50% + var(--arrow-offset-y, 0px));
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid var(--card-bg);
+  filter: drop-shadow(-2px 0 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Стрелочка справа tooltip - для случая когда tooltip слева от колбаски */
+.gantt-event-tooltip.tooltip-arrow-right::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: calc(50% + var(--arrow-offset-y, 0px));
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid var(--card-bg);
+  filter: drop-shadow(2px 0 4px rgba(0, 0, 0, 0.1));
+}
+
+.gantt-event-tooltip-visible {
+  opacity: 0.95;
+  transform: scale(1);
+}
+
+.gantt-event-tooltip-hidden {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.gantt-event-tooltip-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Заголовок tooltip - перетаскиваемая область */
+.gantt-event-tooltip-draggable {
+  cursor: grab;
+  user-select: none;
+  padding: 0.25rem 0.5rem;
+  margin: -0.25rem -0.5rem 0.5rem -0.5rem;
+  border-radius: 6px 6px 0 0;
+  transition: background-color 0.15s ease;
+}
+
+.gantt-event-tooltip-draggable:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.gantt-event-tooltip-draggable:active,
+.gantt-event-tooltip-dragging .gantt-event-tooltip-draggable {
+  cursor: grabbing;
+  background-color: var(--bg-tertiary);
+}
+
+/* Tooltip в режиме перетаскивания */
+.gantt-event-tooltip-dragging {
+  transition: none !important;
+  user-select: none;
+}
+
+/* Скрытие стрелки при ручном перемещении */
+.gantt-event-tooltip.tooltip-no-arrow::after {
+  display: none;
+}
+
+.gantt-event-tooltip-status {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+}
+
+.gantt-event-tooltip-time {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.gantt-event-tooltip-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gantt-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .gantt-toolbar-zoom {
+    margin-left: 0;
+  }
+
+  .gantt-project-cell,
+  .gantt-header-corner {
+    width: 160px;
+    min-width: 160px;
+  }
+
+  .gantt-body-inner {
+    width: auto !important;
+  }
+}

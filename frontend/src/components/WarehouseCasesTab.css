@@ -1,0 +1,55 @@
+/**
+ * @file: WarehouseCasesTab.css
+ * @description: Стили для вкладки "Кейсы".
+ * @created: 2026-01-27
+ */
+
+.warehouse-cases-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.warehouse-price-range {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+@media (max-width: 1200px) {
+  .warehouse-price-range {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
+
+.warehouse-price-range-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.warehouse-price-range-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.warehouse-price-input {
+  width: 80px;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.warehouse-price-input:focus {
+  outline: none;
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px var(--color-accent-light);
+}

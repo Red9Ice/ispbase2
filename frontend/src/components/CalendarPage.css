@@ -1,0 +1,46 @@
+.calendar-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.calendar-tabs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.calendar-tab {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.calendar-tab:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.calendar-tab-active {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.calendar-tab-active:hover {
+  background: var(--color-accent-hover);
+}
+
+.calendar-content {
+  flex: 1;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}

@@ -1,0 +1,138 @@
+/**
+ * @file: EquipmentCategoryManager.css
+ * @description: Стили дерева категорий оборудования.
+ * @created: 2026-01-27
+ */
+
+.equipment-category-manager {
+  width: 100%;
+}
+
+.category-manager-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.category-manager-header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+}
+
+.category-manager-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.category-form-panel {
+  margin-bottom: 1.5rem;
+}
+
+.category-tree-wrap {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+}
+
+.category-tree {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.category-tree .category-tree {
+  margin-left: 1.5rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--border-color);
+}
+
+.category-tree-item {
+  margin: 0.25rem 0;
+}
+
+.category-tree-node {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px;
+  min-height: 2rem;
+}
+
+.category-tree-node:hover {
+  background: var(--table-row-hover);
+}
+
+.category-tree-toggle {
+  flex-shrink: 0;
+  width: 1.25rem;
+  text-align: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  user-select: none;
+}
+
+.category-tree-toggle-empty {
+  cursor: default;
+  color: var(--text-tertiary);
+}
+
+.category-tree-toggle:hover:not(.category-tree-toggle-empty) {
+  color: var(--color-accent);
+}
+
+.category-tree-label {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.category-tree-desc {
+  flex: 1;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-tree-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.category-tree-actions .button-link {
+  font-size: 0.85rem;
+}
+
+.category-tree-delete {
+  color: var(--color-danger, #dc3545) !important;
+}
+
+.category-tree-delete:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .category-manager-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .category-tree-desc {
+    display: none;
+  }
+
+  .category-tree-actions {
+    flex-wrap: wrap;
+  }
+}

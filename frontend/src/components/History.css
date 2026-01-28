@@ -1,0 +1,236 @@
+/**
+ * @file: History.css
+ * @description: Стили страницы «История изменений».
+ * @created: 2026-01-27
+ */
+
+.history-page {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: var(--bg-secondary);
+  transition: background-color 0.3s ease;
+}
+
+.history-filters {
+  padding: 1rem 1.25rem;
+}
+
+.history-filters-title,
+.history-list-title {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.history-filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.history-filters-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.history-filters-row .input,
+.history-filters-row select.input {
+  min-width: 140px;
+  height: 38px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  box-sizing: border-box;
+}
+
+.history-filters-row button.primary {
+  height: 38px;
+  padding: 0.5rem 1.25rem;
+  box-sizing: border-box;
+}
+
+.history-list {
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+}
+
+.history-empty {
+  margin: 0;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--text-tertiary);
+}
+
+.history-table-wrap {
+  overflow-x: auto;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.history-table th,
+.history-table td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.history-table th {
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--table-header-bg);
+}
+
+.history-table td {
+  color: var(--text-primary);
+}
+
+.history-row {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.history-row:hover {
+  background: var(--table-row-hover);
+}
+
+.history-action {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.history-action-create {
+  background: rgba(34, 197, 94, 0.15);
+  color: rgb(22, 163, 74);
+}
+
+.history-action-update {
+  background: rgba(59, 130, 246, 0.15);
+  color: rgb(37, 99, 235);
+}
+
+.history-action-delete {
+  background: rgba(239, 68, 68, 0.15);
+  color: rgb(220, 38, 38);
+}
+
+.history-toggle {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0;
+}
+
+.history-toggle:hover {
+  text-decoration: underline;
+}
+
+.history-detail-row td {
+  padding: 0;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.history-detail {
+  padding: 1rem 1.25rem;
+  background: var(--bg-tertiary);
+}
+
+.history-diff-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.history-diff-table th,
+.history-diff-table td {
+  padding: 0.4rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: top;
+}
+
+.history-diff-table th {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.history-diff-table .history-diff-key {
+  color: var(--text-tertiary);
+  min-width: 120px;
+  word-break: break-all;
+}
+
+.history-diff-table .history-old {
+  color: rgb(220, 38, 38);
+  background: rgba(239, 68, 68, 0.08);
+  word-break: break-word;
+}
+
+.history-diff-table .history-new {
+  color: rgb(22, 163, 74);
+  background: rgba(34, 197, 94, 0.08);
+  word-break: break-word;
+}
+
+[data-theme="dark"] .history-diff-table .history-old {
+  color: rgb(248, 113, 113);
+  background: rgba(239, 68, 68, 0.15);
+}
+
+[data-theme="dark"] .history-diff-table .history-new {
+  color: rgb(74, 222, 128);
+  background: rgba(34, 197, 94, 0.15);
+}
+
+.history-actor {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.history-actor-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.history-actor-placeholder {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+  font-size: 0.75rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.history-actor-name {
+  color: var(--text-primary);
+}

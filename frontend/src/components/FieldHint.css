@@ -1,0 +1,119 @@
+/**
+ * @file: FieldHint.css
+ * @description: Styles for field hint tooltip.
+ * @dependencies: themes.css
+ * @created: 2026-01-27
+ */
+
+.field-hint-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.field-hint-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  color: var(--text-tertiary);
+  cursor: help;
+  transition: color 0.2s ease;
+  outline: none;
+}
+
+.field-hint-icon:focus {
+  outline: none;
+}
+
+.field-hint-icon:hover,
+.field-hint-icon:focus {
+  color: var(--color-accent);
+  outline: none;
+}
+
+.field-hint-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  color: inherit;
+}
+
+.field-hint-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  transform: translateY(4px);
+  margin-bottom: 8px;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.4);
+  border-radius: 6px;
+  box-shadow: var(--shadow-md);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  white-space: pre-line;
+  max-width: 480px;
+  min-width: 380px;
+  z-index: 1000;
+  pointer-events: none;
+  line-height: 1.5;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.field-hint-container:hover .field-hint-tooltip,
+.field-hint-icon:focus + .field-hint-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+[data-theme="dark"] .field-hint-tooltip {
+  background: rgba(45, 45, 45, 0.85);
+  border-color: rgba(60, 60, 60, 0.4);
+}
+
+.field-hint-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 10px;
+  border: 6px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.85);
+  margin-top: -1px;
+}
+
+.field-hint-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 10px;
+  border: 7px solid transparent;
+  border-top-color: rgba(226, 232, 240, 0.5);
+}
+
+[data-theme="dark"] .field-hint-tooltip::after {
+  border-top-color: rgba(45, 45, 45, 0.85);
+}
+
+[data-theme="dark"] .field-hint-tooltip::before {
+  border-top-color: rgba(60, 60, 60, 0.4);
+}

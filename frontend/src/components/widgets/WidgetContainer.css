@@ -1,0 +1,392 @@
+/**
+ * @file: WidgetContainer.css
+ * @description: Стили для контейнера виджетов с улучшенной системой движения и масштабирования
+ * @features:
+ *   - Визуальная обратная связь при перетаскивании и масштабировании
+ *   - Стили для всех направлений resize (вертикаль, горизонталь, диагональ)
+ *   - Плавные анимации и переходы
+ * @created: 2026-01-27
+ * @updated: 2026-01-27 - Полная переработка стилей для новой системы движения
+ */
+
+.widget-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .widget-container {
+    padding: 12px;
+  }
+}
+
+.widget-wrapper {
+  /* Liquid Glass эффект */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  --widget-scale: 1;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+/* Поддержка темной темы для liquid glass */
+[data-theme="dark"] .widget-wrapper {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .widget-wrapper:hover {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(102, 126, 234, 0.5);
+  box-shadow: 
+    0 12px 40px rgba(102, 126, 234, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Градиентная граница для liquid glass эффекта */
+.widget-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.3) 0%,
+    rgba(118, 75, 162, 0.3) 50%,
+    rgba(255, 182, 0, 0.2) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Анимация появления применяется только к содержимому, не к wrapper */
+.widget-wrapper .widget-content {
+  animation: widgetFadeIn 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+
+.widget-wrapper:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(102, 126, 234, 0.4);
+  box-shadow: 
+    0 12px 40px rgba(102, 126, 234, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 0 0 1px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+.widget-wrapper:hover .widget-content {
+  transform: translateY(0) scale(1);
+}
+
+/* Анимация появления виджетов */
+@keyframes widgetFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Стили для перетаскивания и изменения размера */
+.widget-wrapper.dragging {
+  transition: none;
+  z-index: 1000;
+  will-change: transform;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
+.widget-wrapper.dragging {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(102, 126, 234, 0.5);
+  box-shadow: 
+    0 16px 48px rgba(102, 126, 234, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.widget-wrapper.resizing {
+  transition: none;
+  z-index: 999;
+  will-change: width, height;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.widget-wrapper.resizing {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(102, 126, 234, 0.5);
+  box-shadow: 
+    0 12px 40px rgba(102, 126, 234, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.widget-wrapper.dragging .widget-content,
+.widget-wrapper.resizing .widget-content {
+  animation: none;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.widget-header {
+  padding: calc(12px * var(--widget-scale, 1)) calc(16px * var(--widget-scale, 1));
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  cursor: grab;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.widget-header.locked {
+  cursor: default;
+  opacity: 0.7;
+}
+
+[data-theme="dark"] .widget-header {
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.widget-header:active {
+  cursor: grabbing;
+}
+
+.widget-header:hover {
+  background: rgba(102, 126, 234, 0.1);
+  border-bottom-color: rgba(102, 126, 234, 0.3);
+}
+
+.widget-wrapper.dragging .widget-header {
+  background: var(--primary-color);
+  opacity: 0.9;
+  border-bottom-color: var(--primary-color);
+}
+
+.widget-header:hover {
+  background: var(--bg-hover);
+}
+
+.widget-title {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: calc(14px * var(--widget-scale, 1));
+}
+
+.widget-remove-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.widget-remove-btn:hover {
+  background: var(--danger-color);
+  color: white;
+}
+
+.widget-content {
+  flex: 1;
+  padding: calc(16px * var(--widget-scale, 1));
+  overflow: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  /* Адаптация содержимого под размер виджета */
+  width: 100%;
+  height: 100%;
+  /* Позволяем содержимому адаптироваться */
+  position: relative;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* Адаптация содержимого виджетов */
+.widget-content > * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Адаптивные изображения и графики */
+.widget-content img,
+.widget-content canvas,
+.widget-content svg {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* Стили для react-draggable и react-resizable */
+.react-draggable {
+  position: absolute;
+}
+
+.react-draggable-dragging {
+  z-index: 1000;
+}
+
+.react-resizable-handle {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  bottom: 0;
+  right: 0;
+  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNiIgaGVpZ2h0PSI2IiB2aWV3Qm94PSIwIDAgNiA2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im0wIDZoNnYtNnoiIGZpbGw9IiM5OTkiLz48L3N2Zz4=');
+  background-position: bottom right;
+  padding: 0 3px 3px 0;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  box-sizing: border-box;
+  cursor: se-resize;
+  opacity: 0.6;
+  transition: opacity 0.2s, background-color 0.2s;
+  z-index: 10;
+}
+
+.react-resizable-handle:hover {
+  opacity: 1;
+  background-color: rgba(102, 126, 234, 0.3);
+  border-radius: 4px 0 0 0;
+}
+
+.widget-wrapper:hover .react-resizable-handle {
+  opacity: 0.8;
+}
+
+.widget-wrapper.resizing .react-resizable-handle {
+  opacity: 1;
+  background-color: rgba(102, 126, 234, 0.4);
+}
+
+.react-resizable-handle-se {
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+  width: 24px;
+  height: 24px;
+}
+
+/* Стили для горизонтального resize (восток - правая сторона) */
+.react-resizable-handle-e {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  cursor: ew-resize;
+  opacity: 0;
+  transition: opacity 0.2s, background-color 0.2s;
+  z-index: 10;
+  background: transparent;
+}
+
+.react-resizable-handle-e:hover,
+.react-resizable-handle-e:active {
+  opacity: 1;
+  background-color: rgba(102, 126, 234, 0.3);
+}
+
+.widget-wrapper:hover .react-resizable-handle-e {
+  opacity: 0.6;
+}
+
+.widget-wrapper.resizing .react-resizable-handle-e {
+  opacity: 1;
+  background-color: rgba(102, 126, 234, 0.4);
+}
+
+/* Стили для вертикального resize (юг - нижняя сторона) */
+.react-resizable-handle-s {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  cursor: ns-resize;
+  opacity: 0;
+  transition: opacity 0.2s, background-color 0.2s;
+  z-index: 10;
+  background: transparent;
+}
+
+.react-resizable-handle-s:hover,
+.react-resizable-handle-s:active {
+  opacity: 1;
+  background-color: rgba(102, 126, 234, 0.3);
+}
+
+.widget-wrapper:hover .react-resizable-handle-s {
+  opacity: 0.6;
+}
+
+.widget-wrapper.resizing .react-resizable-handle-s {
+  opacity: 1;
+  background-color: rgba(102, 126, 234, 0.4);
+}
+
+/* Стили для коллизий */
+.widget-wrapper.collision {
+  border-color: rgba(255, 87, 87, 0.6);
+  box-shadow: 
+    0 8px 32px rgba(255, 87, 87, 0.3),
+    inset 0 1px 0 rgba(255, 87, 87, 0.3),
+    0 0 0 2px rgba(255, 87, 87, 0.4);
+  animation: collisionPulse 0.5s ease-in-out;
+}
+
+@keyframes collisionPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}

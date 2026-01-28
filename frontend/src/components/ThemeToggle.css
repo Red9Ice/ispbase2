@@ -1,0 +1,52 @@
+/**
+ * @file: ThemeToggle.css
+ * @description: Стили для компонента переключения темы
+ * @dependencies: ThemeToggle.tsx
+ * @created: 2026-01-26
+ */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--border-sidebar);
+  border-radius: 6px;
+  color: var(--text-sidebar);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .theme-toggle {
+  background: transparent;
+  border-color: var(--border-sidebar);
+  color: var(--text-sidebar);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-sidebar-hover);
+  border-color: var(--color-accent);
+  color: var(--text-sidebar-active);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 140, 0, 0.15);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: var(--bg-sidebar-hover);
+  border-color: var(--color-accent);
+  box-shadow: 0 2px 12px rgba(255, 140, 0, 0.2);
+}
+
+.theme-toggle-icon {
+  font-size: 1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

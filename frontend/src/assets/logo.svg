@@ -1,0 +1,36 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Градиент для свечения -->
+    <radialGradient id="glow" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="rgba(255, 140, 0, 0.8)" />
+      <stop offset="100%" stop-color="rgba(255, 140, 0, 0)" />
+    </radialGradient>
+    <!-- Градиент для квадратов -->
+    <linearGradient id="squareGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8C00" />
+      <stop offset="100%" stop-color="#FF6B00" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Фоновое свечение -->
+  <circle cx="40" cy="40" r="38" fill="url(#glow)" opacity="0.3" />
+  
+  <!-- Сетка 3x3 из квадратов -->
+  <!-- Первая строка -->
+  <rect x="8" y="8" width="18" height="18" rx="2" fill="url(#squareGradient)" />
+  <rect x="31" y="8" width="18" height="18" rx="2" fill="url(#squareGradient)" />
+  <rect x="54" y="8" width="18" height="18" rx="2" fill="url(#squareGradient)" />
+  
+  <!-- Вторая строка -->
+  <rect x="8" y="31" width="18" height="18" rx="2" fill="url(#squareGradient)" />
+  <rect x="31" y="31" width="18" height="18" rx="2" fill="url(#squareGradient)" />
+  <rect x="54" y="31" width="18" height="18" rx="2" fill="url(#squareGradient)" />
+  
+  <!-- Третья строка -->
+  <rect x="8" y="54" width="18" height="18" rx="2" fill="url(#squareGradient)" />
+  <rect x="31" y="54" width="18" height="18" rx="2" fill="url(#squareGradient)" />
+  <rect x="54" y="54" width="18" height="18" rx="2" fill="url(#squareGradient)" />
+  
+  <!-- Внешняя обводка -->
+  <rect x="4" y="4" width="72" height="72" rx="8" fill="none" stroke="rgba(255, 140, 0, 0.2)" stroke-width="2" />
+</svg>

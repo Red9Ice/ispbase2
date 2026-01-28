@@ -1,0 +1,11 @@
+/**
+ * @file: TasksWidget.css
+ * @description: Стили для виджета задач
+ * @created: 2026-01-27
+ */
+
+.tasks-widget {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}

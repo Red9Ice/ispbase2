@@ -1,0 +1,271 @@
+@import './styles/themes.css';
+
+:root {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+html {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Гарантируем, что интерфейс всегда виден */
+#root {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+/* Исправление обрезания текста на осях графиков recharts */
+.recharts-wrapper {
+  overflow: visible !important;
+}
+
+.recharts-surface {
+  overflow: visible !important;
+}
+
+.recharts-cartesian-axis {
+  overflow: visible !important;
+}
+
+.recharts-cartesian-axis-tick-value {
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+
+/* Custom Scrollbar Styles */
+/* Firefox scrollbar */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+*::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 8px;
+  border: 2px solid var(--scrollbar-track);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  min-height: 30px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+*::-webkit-scrollbar-button {
+  display: block;
+  height: 16px;
+  width: 16px;
+  background: var(--scrollbar-button);
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+*::-webkit-scrollbar-button:hover {
+  background: var(--scrollbar-button-hover);
+}
+
+*::-webkit-scrollbar-button:single-button {
+  display: block;
+}
+
+/* Light theme scrollbar button arrows */
+*::-webkit-scrollbar-button:vertical:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%23475569' d='M3 0L0 3h6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 6px;
+}
+
+*::-webkit-scrollbar-button:vertical:decrement:hover {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%2364748B' d='M3 0L0 3h6z'/%3E%3C/svg%3E");
+}
+
+*::-webkit-scrollbar-button:vertical:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%23475569' d='M3 6L0 3h6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 6px;
+}
+
+*::-webkit-scrollbar-button:vertical:increment:hover {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%2364748B' d='M3 6L0 3h6z'/%3E%3C/svg%3E");
+}
+
+*::-webkit-scrollbar-button:horizontal:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%23475569' d='M0 3L3 0v6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 6px;
+}
+
+*::-webkit-scrollbar-button:horizontal:decrement:hover {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%2364748B' d='M0 3L3 0v6z'/%3E%3C/svg%3E");
+}
+
+*::-webkit-scrollbar-button:horizontal:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%23475569' d='M6 3L3 0v6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 6px;
+}
+
+*::-webkit-scrollbar-button:horizontal:increment:hover {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%2364748B' d='M6 3L3 0v6z'/%3E%3C/svg%3E");
+}
+
+/* Dark theme scrollbar button arrows */
+[data-theme="dark"] *::-webkit-scrollbar-button:vertical:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%23808080' d='M3 0L0 3h6z'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-button:vertical:decrement:hover {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%23B0B0B0' d='M3 0L0 3h6z'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-button:vertical:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%23808080' d='M3 6L0 3h6z'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-button:vertical:increment:hover {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%23B0B0B0' d='M3 6L0 3h6z'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-button:horizontal:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%23808080' d='M0 3L3 0v6z'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-button:horizontal:decrement:hover {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%23B0B0B0' d='M0 3L3 0v6z'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-button:horizontal:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%23808080' d='M6 3L3 0v6z'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-button:horizontal:increment:hover {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Cpath fill='%23B0B0B0' d='M6 3L3 0v6z'/%3E%3C/svg%3E");
+}
+
+/* Анимации удаления элементов */
+@keyframes fadeOutSlide {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+    max-height: 500px;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-20px);
+    max-height: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+}
+
+.item-deleting {
+  animation: fadeOutSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  pointer-events: none;
+}
+
+/* Анимация для строк таблицы */
+.table-row-deleting {
+  animation: fadeOutSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  pointer-events: none;
+}
+
+/* Анимация для карточек */
+.card-deleting {
+  animation: fadeOutSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  pointer-events: none;
+}
+
+/* Анимация для модальных окон - красивый распад */
+.modal-deleting {
+  animation: modalDisintegrate 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+  pointer-events: none;
+}
+
+.modal-overlay:has(.modal-deleting) {
+  animation: overlayFadeOut 0.4s ease-out forwards;
+}
+
+@keyframes modalDisintegrate {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+  30% {
+    opacity: 0.9;
+    transform: scale(0.98) rotate(1deg);
+    filter: blur(1px);
+  }
+  60% {
+    opacity: 0.6;
+    transform: scale(0.92) rotate(3deg) translateY(10px);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.75) rotate(8deg) translateY(30px);
+    filter: blur(10px);
+  }
+}
+
+@keyframes overlayFadeOut {
+  0% {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+  100% {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+}
